@@ -1,5 +1,8 @@
 <div class="col-md-12">
   <div class="mymoive">
+
+    <%= link_to("写影评", new_mymoife_review_path(@mymoive), class: "btn btn-default pull-right")%>
+
     <% if current_user && current_user == @mymoive.user %>
       <%= link_to("Edit", edit_mymoife_path(@mymoive), class: "btn btn-primary pull-right")%>
     <% end %>

@@ -33,6 +33,7 @@ class MymoivesController < ApplicationController
   def destroy
     @mymoive = Mymoive.find(params[:id])
     @mymoive.destroy
+    redirect_to mymoives_path, alert: "Delete moive Success"
   end
 
   private

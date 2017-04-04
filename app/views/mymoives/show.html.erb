@@ -1,5 +1,12 @@
 <div class="col-md-12">
   <div class="mymoive">
+    <span class="pull-right">
+      <% if current_user && current_user.is_favorite_of?(@mymoive) %>
+        <label class="label label-success"> 已收藏 </label>
+      <% else %>
+        <label class="label label-warning"> 未收藏 </label>
+      <% end %>
+    </span>
 
     <%= link_to("写影评", new_mymoife_review_path(@mymoive), class: "btn btn-default pull-right")%>
 

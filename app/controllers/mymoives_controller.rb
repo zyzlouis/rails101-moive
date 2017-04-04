@@ -7,5 +7,16 @@ class MymoivesController < ApplicationController
     @mymoive = Mymoive.new
   end
 
+  def create
+    @mymoive = Mymoive.new(mymoive_params)
+    @mymoive.save
+    redirect_to mymoives_path
+  end
+
+  private
+
+  def mymoive_params
+    params.require(:mymoive).permit(:name,:description)
+  end
 
 end

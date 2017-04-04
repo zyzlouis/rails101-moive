@@ -13,6 +13,10 @@ class MymoivesController < ApplicationController
     redirect_to mymoives_path
   end
 
+  def show
+    @mymoive = Mymoive.find(params[:id])
+  end
+
   private
 
   def mymoive_params

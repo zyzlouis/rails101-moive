@@ -2,17 +2,6 @@
     <h2>编辑影片</h2>
 
     <hr>
-    <%= form_for @mymoive do |f| %>
-
-    标题
-    <%= f.text_field :name %>
-    <br>
-    叙述
-    <br>
-    <%= f.text_area :description %>
-    <br>
-
-    <%= f.submit "Submit", :disable_with => 'Submiting...' %>
-    <% end %>
+    <%= render "form" %>
 
 </div>

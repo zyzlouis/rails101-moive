@@ -22,7 +22,7 @@ class MymoivesController < ApplicationController
 
   def show
     @mymoive = Mymoive.find(params[:id])
-    @reviews = @mymoive.reviews.recent
+    @reviews = @mymoive.reviews.recent.paginate(:page => params[:page], :per_page => 3)
   end
 
   def edit

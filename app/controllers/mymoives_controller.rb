@@ -22,6 +22,7 @@ class MymoivesController < ApplicationController
 
   def show
     @mymoive = Mymoive.find(params[:id])
+    @reviews = @mymoive.reviews
   end
 
   def edit
@@ -38,7 +39,7 @@ class MymoivesController < ApplicationController
   end
 
   def destroy
-    
+
     @mymoive.destroy
     redirect_to mymoives_path, alert: "Delete moive Success"
   end

@@ -4,9 +4,28 @@
     <%= link_to("写影评", new_mymoife_review_path(@mymoive), class: "btn btn-default pull-right")%>
 
     <% if current_user && current_user == @mymoive.user %>
-      <%= link_to("Edit", edit_mymoife_path(@mymoive), class: "btn btn-primary pull-right")%>
+      <%= link_to("编辑", edit_mymoife_path(@mymoive), class: "btn btn-primary pull-right")%>
     <% end %>
   </div>
   <h2><%= @mymoive.name %></h2>
   <p><%= @mymoive.description %></p>
+
+  <table class="table">
+    <thead>
+     <tr>
+        <th>评价内容</th>
+        <th>评价者</th>
+        <th>评价时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td><%= review.content %></td>
+          <td><%= review.user.email %></td>
+          <td><%= review.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

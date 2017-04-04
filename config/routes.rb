@@ -9,5 +9,9 @@ Rails.application.routes.draw do
 
     resources :reviews
   end
+
+  namespace :account do
+    resources :mymoives
+  end
   root 'mymoives#index'
 end

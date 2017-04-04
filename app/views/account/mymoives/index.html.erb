@@ -1,0 +1,28 @@
+<div class="col-md-12">
+
+  <h2 class="text-center"> 我收藏的电影 </h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th> # </th>
+        <th> 影片名 </th>
+        <th> 简介 </th>
+        <th> 影评数量 </th>
+        <th> 更新时间 </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @mymoives.each do |mymoive| %>
+        <tr>
+          <td> # </td>
+          <td> <%= link_to(mymoive.name, mymoife_path(mymoive)) %> </td>
+          <td> <%= mymoive.description %> </td>
+          <td> <%= mymoive.reviews.count %> </td>
+          <td> <%= mymoive.updated_at %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

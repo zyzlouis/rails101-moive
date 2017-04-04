@@ -17,6 +17,24 @@ class MymoivesController < ApplicationController
     @mymoive = Mymoive.find(params[:id])
   end
 
+  def edit
+    @mymoive = Mymoive.find(params[:id])
+  end
+
+  def update
+    @mymoive = Mymoive.find(params[:id])
+    if @mymoive.update(mymoive_params)
+      redirect_to mymoives_path, notice: "Update Success"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @mymoive = Mymoive.find(params[:id])
+    @mymoive.destroy
+  end
+
   private
 
   def mymoive_params

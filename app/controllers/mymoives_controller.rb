@@ -73,6 +73,7 @@ class MymoivesController < ApplicationController
 
   private
 
+
   def find_mymoive_and_check_permission
     @mymoive = Mymoive.find(params[:id])
     if current_user != @mymoive.user

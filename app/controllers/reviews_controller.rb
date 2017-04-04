@@ -1,9 +1,10 @@
 class ReviewsController < ApplicationController
 
   before_action :authenticate_user!, :only => [:new, :create,:edit,:update,:destroy]
+  before_action :check_is_favorite_of_moive, only: [:new,:edit,:destroy]
 
   def new
-    @mymoive = Mymoive.find(params[:mymoife_id])
+
     @review = Review.new
   end
 
@@ -22,7 +23,7 @@ class ReviewsController < ApplicationController
 
 
   def edit
-    @mymoive = Mymoive.find(params[:mymoife_id])
+
     @review = Review.find(params[:id])
   end
 
@@ -37,13 +38,20 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @mymoive = Mymoive.find(params[:mymoife_id])
+
     @review = Review.find(params[:id])
     @review.destroy
     redirect_to account_reviews_path, alert: "Deleted Review Success"
   end
 
   private
+
+  def check_is_favorite_of_moive
+    @mymoive = Mymoive.find(params[:mymoife_id])
+    if !current_user.is_favorite_of?(@mymoive)
+      redirect_to root_path, alert: "必须收藏影片才可以进行评价."
+    end
+  end
 
   def review_params
     params.require(:review).permit(:content)

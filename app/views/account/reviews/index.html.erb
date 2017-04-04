@@ -1,0 +1,28 @@
+
+<div class="col-md-12">
+
+  <h2 class="text-center"> 我的影评 </h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th> 内容 </th>
+        <th> 影片名 </th>
+        <th> 评价时间 </th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td> <%= review.content %> </td>
+          <td> <%= review.mymoive.name %> </td>
+          <td> <%= review.updated_at %> </td>
+          <td> <%= link_to('Edit', edit_account_review_path(review.mymoive, review), class: "btn btn-default btn-xs") %></td>
+          <td> <%= link_to('Delete', account_review_path(review.mymoive, review), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

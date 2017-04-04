@@ -1,6 +1,6 @@
 class MymoivesController < ApplicationController
-   before_action :authenticate_user! , only: [:new]
-   
+   before_action :authenticate_user! , only: [:new,:create,:edit,:update,:destroy]
+
   def index
     @mymoives = Mymoive.all
   end
@@ -11,6 +11,7 @@ class MymoivesController < ApplicationController
 
   def create
     @mymoive = Mymoive.new(mymoive_params)
+    @group.user = current_user
     if @mymoive.save
       redirect_to mymoives_path
     else

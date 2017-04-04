@@ -1,0 +1,28 @@
+<div class="col-md-12">
+  <div class="mymoive">
+    <%= link_to("New moive", new_mymoife_path, class: "btn btn-primary pull-right") %>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>影片名</td>
+        <td>简介</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @mymoives.each do |mymoive| %>
+        <tr>
+          <td>#</td>
+          <td><%= link_to(mymoive.name, mymoife_path(mymoive)) %></td>
+          <td><%= mymoive.description %></td>
+          <td>
+              <%= link_to("Edit", edit_mymoife_path(mymoive), class: "btn btn-sm btn-default")%>
+              <%= link_to("Delete", mymoife_path(mymoive),    class: "btn btn-sm btn-default",
+                          method: :delete, data: { confirm: "Are you sure?" } )%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,2 @@
+class Mymoive < ApplicationRecord
+end

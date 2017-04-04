@@ -1,0 +1,15 @@
+<% @mymoives.each do |mymoive| %>
+  <tr>
+    <td>#</td>
+    <td><%= link_to(mymoive.name, mymoife_path(mymoive)) %></td>
+    <td><%= render_mymoive_description(mymoive) %></td>
+    <td><%= mymoive.user.email %></td>
+    <td>
+      <% if current_user && current_user == mymoive.user %>
+        <%= link_to("Edit", edit_mymoife_path(mymoive), class: "btn btn-sm btn-default")%>
+        <%= link_to("Delete", mymoife_path(mymoive),    class: "btn btn-sm btn-default",
+                    method: :delete, data: { confirm: "Are you sure?" } )%>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

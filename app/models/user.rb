@@ -14,4 +14,12 @@ class User < ApplicationRecord
     reviewed_mymoives.include?(mymoive)
   end
 
+  def like!(mymoive)
+    reviewed_mymoives << mymoive
+  end
+
+  def cancle!(mymoive)
+    reviewed_mymoives.delete(mymoive)
+  end
+
 end

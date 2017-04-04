@@ -18,7 +18,7 @@
         <tr>
           <td> # </td>
           <td> <%= link_to(mymoive.name, mymoife_path(mymoive)) %> </td>
-          <td> <%= mymoive.description %> </td>
+          <td> <%= render_mymoive_description(mymoive) %> </td>
           <td> <%= mymoive.reviews.count %> </td>
           <td> <%= mymoive.updated_at %> </td>
         </tr>

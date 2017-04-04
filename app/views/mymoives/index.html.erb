@@ -19,9 +19,11 @@
           <td><%= mymoive.description %></td>
           <td><%= mymoive.user.email %></td>
           <td>
+            <% if current_user && current_user == mymoive.user %>
               <%= link_to("Edit", edit_mymoife_path(mymoive), class: "btn btn-sm btn-default")%>
               <%= link_to("Delete", mymoife_path(mymoive),    class: "btn btn-sm btn-default",
                           method: :delete, data: { confirm: "Are you sure?" } )%>
+            <% end %>
           </td>
         </tr>
       <% end %>

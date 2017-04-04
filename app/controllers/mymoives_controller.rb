@@ -11,7 +11,7 @@ class MymoivesController < ApplicationController
 
   def create
     @mymoive = Mymoive.new(mymoive_params)
-    @group.user = current_user
+    @mymoive.user = current_user
     if @mymoive.save
       redirect_to mymoives_path
     else

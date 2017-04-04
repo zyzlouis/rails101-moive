@@ -8,6 +8,7 @@
         <td>#</td>
         <td>影片名</td>
         <td>简介</td>
+        <td>导演</td>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +17,7 @@
           <td>#</td>
           <td><%= link_to(mymoive.name, mymoife_path(mymoive)) %></td>
           <td><%= mymoive.description %></td>
+          <td><%= mymoive.user.email %></td>
           <td>
               <%= link_to("Edit", edit_mymoife_path(mymoive), class: "btn btn-sm btn-default")%>
               <%= link_to("Delete", mymoife_path(mymoive),    class: "btn btn-sm btn-default",

@@ -1,18 +1,8 @@
-<%= form_for @mymoive do |f| %>
-<% if @mymoive.errors.any? %>
-<ul>
-  <% @mymoive.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-</ul>
-<% end %>
-标题
-<%= f.text_field :name %>
-<br>
-叙述
-<br>
-<%= f.text_area :description %>
-<br>
+<%= simple_form_for @mymoive do |f| %>
+  <div class="form-mymoive">
+    <%= f.input :name, input_html: {class: "form-control"} %>
+    <%= f.input :description, input_html: {class: "form-control"} %>
+  </div>
 
-<%= f.submit "Submit", :disable_with => 'Submiting...' %>
+<%= f.submit "Submit", class: "btn btn-primary", data:{ disable_with: "Submiting..." } %>
 <% end %>

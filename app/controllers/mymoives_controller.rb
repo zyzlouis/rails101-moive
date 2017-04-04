@@ -9,8 +9,11 @@ class MymoivesController < ApplicationController
 
   def create
     @mymoive = Mymoive.new(mymoive_params)
-    @mymoive.save
-    redirect_to mymoives_path
+    if @mymoive.save
+      redirect_to mymoives_path
+    else
+      render :new
+    end
   end
 
   def show

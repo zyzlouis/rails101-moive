@@ -14,6 +14,7 @@ class MymoivesController < ApplicationController
     @mymoive = Mymoive.new(mymoive_params)
     @mymoive.user = current_user
     if @mymoive.save
+      current_user.like!(@mymoive)
       redirect_to mymoives_path
     else
       render :new

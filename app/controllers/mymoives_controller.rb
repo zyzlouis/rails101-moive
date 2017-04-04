@@ -22,7 +22,7 @@ class MymoivesController < ApplicationController
 
   def show
     @mymoive = Mymoive.find(params[:id])
-    @reviews = @mymoive.reviews
+    @reviews = @mymoive.reviews.recent
   end
 
   def edit

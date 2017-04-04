@@ -1,5 +1,6 @@
 class MymoivesController < ApplicationController
    before_action :authenticate_user! , only: [:new,:create,:edit,:update,:destroy]
+   before_action :find_mymoive_and_check_permission, only: [:edit,:update,:destroy]
 
   def index
     @mymoives = Mymoive.all
@@ -24,11 +25,11 @@ class MymoivesController < ApplicationController
   end
 
   def edit
-    @mymoive = Mymoive.find(params[:id])
+
   end
 
   def update
-    @mymoive = Mymoive.find(params[:id])
+
     if @mymoive.update(mymoive_params)
       redirect_to mymoives_path, notice: "Update Success"
     else
@@ -37,12 +38,19 @@ class MymoivesController < ApplicationController
   end
 
   def destroy
-    @mymoive = Mymoive.find(params[:id])
+    
     @mymoive.destroy
     redirect_to mymoives_path, alert: "Delete moive Success"
   end
 
   private
+
+  def find_mymoive_and_check_permission
+    @mymoive = Mymoive.find(params[:id])
+    if current_user != @mymoive.user
+      redirect_to root_path, alert: "You have no permission."
+    end
+  end
 
   def mymoive_params
     params.require(:mymoive).permit(:name,:description)

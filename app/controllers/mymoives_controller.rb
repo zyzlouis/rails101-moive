@@ -1,5 +1,5 @@
 class MymoivesController < ApplicationController
-   before_action :authenticate_user! , only: [:new,:create,:edit,:update,:destroy]
+   before_action :authenticate_user! , only: [:new,:create,:edit,:update,:destroy,:like,:cancle]
    before_action :find_mymoive_and_check_permission, only: [:edit,:update,:destroy]
 
   def index
@@ -42,6 +42,32 @@ class MymoivesController < ApplicationController
 
     @mymoive.destroy
     redirect_to mymoives_path, alert: "Delete moive Success"
+  end
+
+  def like
+   @mymoive = Mymoive.find(params[:id])
+
+    if !current_user.is_favorite_of?(@mymoive)
+      current_user.like!(@mymoive)
+      flash[:notice] = "收藏影片成功！"
+    else
+      flash[:warning] = "该影片已收藏过"
+    end
+
+    redirect_to mymoife_path(@mymoive)
+  end
+
+  def cancle
+    @mymoive = Mymoive.find(params[:id])
+
+    if current_user.is_favorite_of?(@mymoive)
+      current_user.cancle!(@mymoive)
+      flash[:alert] = "已取消收藏！"
+    else
+      flash[:warning] = "从未收藏过，怎么取消？"
+    end
+
+    redirect_to mymoife_path(@mymoive)
   end
 
   private

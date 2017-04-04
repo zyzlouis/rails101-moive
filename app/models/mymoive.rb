@@ -4,5 +4,5 @@ class Mymoive < ApplicationRecord
   validates :name, presence: true
 
   has_many :mymoive_relationships
-  has_many :viewers,through: :mymoive_relationships, source: :user
+  has_many :members,through: :mymoive_relationships, source: :user
 end

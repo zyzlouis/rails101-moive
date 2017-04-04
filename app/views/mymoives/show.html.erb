@@ -3,8 +3,10 @@
     <span class="pull-right">
       <% if current_user && current_user.is_favorite_of?(@mymoive) %>
         <label class="label label-success"> 已收藏 </label>
+        <%= link_to("取消收藏", cancle_mymoife_path(@mymoive), method: :post, class: "btn btn-default") %>
       <% else %>
         <label class="label label-warning"> 未收藏 </label>
+        <%= link_to("收藏影片", like_mymoife_path(@mymoive), method: :post, class: "btn btn-default") %>
       <% end %>
     </span>
 

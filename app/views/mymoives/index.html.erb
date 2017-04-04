@@ -16,7 +16,7 @@
         <tr>
           <td>#</td>
           <td><%= link_to(mymoive.name, mymoife_path(mymoive)) %></td>
-          <td><%= mymoive.description %></td>
+          <td><%= simple_format(mymoive.description) %></td>
           <td><%= mymoive.user.email %></td>
           <td>
             <% if current_user && current_user == mymoive.user %>
